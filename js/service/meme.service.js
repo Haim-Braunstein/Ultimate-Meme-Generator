@@ -40,3 +40,10 @@ function setColor(userColor){
     gMeme.lines[0].color= userColor
 
 }
+
+function ChangeFontSize(fontSize){
+
+    gMeme.lines[0].size= fontSize
+
+}
+

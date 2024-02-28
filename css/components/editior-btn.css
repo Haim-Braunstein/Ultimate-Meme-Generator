@@ -1,4 +1,5 @@
-.color-picker-container {
+
+.color-picker-container, .editor-btn button {
     width: 60px;
     height: 60px;
     background-color: rgb(31, 116, 214);
