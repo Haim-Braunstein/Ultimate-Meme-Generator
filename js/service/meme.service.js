@@ -22,16 +22,18 @@ function getMeme(){
 }
 
 function setLineText (text){
-
     gMeme.lines[0].txt= text
+
 
 }
 
 function getImgs(){
+
     return gImgs
 }
 
 function setImg(img){
+
     gMeme.selectedImgId= img
 }
 
@@ -42,7 +44,7 @@ function setColor(userColor){
 }
 
 function ChangeFontSize(fontSize){
-
+    
     gMeme.lines[0].size= fontSize
 
 }

@@ -16,7 +16,7 @@
             <div class="main-nav">
                 <ul>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="showGallery()">Gallery</a></li>
                     <li><a href="#">Mems</a></li>
                 </ul>
             </div>
@@ -35,12 +35,12 @@
             </div>
         </section>
 
-        <section class="editor">
+        <section class="meme-editor" hidden>
             <div class="canvas-container">
                 <canvas width="650" height="650" class="img-canvas">
                 </canvas>
             </div>
-            <div class="meme-editor">
+            <div class="editor">
                 <div class="editor-btn">
                     <div class="color-picker-container">
                         <input type="color" class="input-color" onchange="onSetColor(this.value)">
