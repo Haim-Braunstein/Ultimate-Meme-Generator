@@ -28,7 +28,8 @@
 
         <section class="gallery gallery-layout ">
             <div class="filter-keyword">
-                <input type="text" oninput="onTextMeme(this.value)" class="filter-img" placeholder="Enter search keyword">
+                <input type="text" oninput="onTextMeme(this.value)" class="filter-img"
+                    placeholder="Enter search keyword">
             </div>
             <div class="gallery-container">
             </div>
@@ -40,6 +41,18 @@
                 </canvas>
             </div>
             <div class="meme-editor">
+                <div class="editor-btn">
+                    <div class="color-picker-container">
+                        <input type="color" class="input-color" onchange="onSetColor(this.value)">
+                        <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
+                    </div>
+                </div>
+
+                <div class=" actions-btn">
+                    <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#" class="share-btn">Share</a>
+
+                </div>
             </div>
 
         </section>

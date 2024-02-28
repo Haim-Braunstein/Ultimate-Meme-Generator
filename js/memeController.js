@@ -33,6 +33,16 @@ function onTextMeme(txt){
     renderMeme()
 }
 
+function onSetColor(elInputColor){
+    setColor(elInputColor)
+}
+
+function downloadImg(elLink) {
+	const imgContent = gElCanvas.toDataURL('image/jpg')
+	gCtx.fillStyle = 'white'
+	elLink.href = imgContent
+}
+
 
 
 
