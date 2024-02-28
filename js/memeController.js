@@ -9,19 +9,20 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
 
     renderMeme()
+    renderGallery()
 }
 
 
 function renderMeme() {
     const mems =  getMeme()
     const elImg = new Image()
-    elImg.src = 'img/2.jpg'
+    mems.selectedImgId
+    elImg.src = `img/${mems.selectedImgId}.jpg`
 
     elImg.onload = () =>{
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        gCtx.font = "30px impact"
-	gCtx.fillStyle = 'black'
-    console.log(mems.lines[0].txt);
+        gCtx.font = `${mems.lines[0].size +'px'} impact`
+	gCtx.fillStyle = mems.lines[0].color
     gCtx.fillText(mems.lines[0].txt, 10, 50)
     }
     
