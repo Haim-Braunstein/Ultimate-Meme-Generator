@@ -13,44 +13,49 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt:'', size: 30, color: 'white' },
-        { txt:'', size: 30, color: 'white' }
+        { txt: '', size: 30, color: 'white', isSelectd: true, },
+        { txt: '', size: 30, color: 'white', isSelectd: false, }
     ]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
-function getMeme(){
+function getMeme() {
 
-    return  gMeme 
-    
-}
-
-function setLineText (text){
-    gMeme.lines[0].txt= text
-
+    return gMeme
 
 }
 
-function getImgs(){
+function setLineText(text) {
+    gMeme.lines[0].txt = text
+
+}
+
+function setNewLineText(text) {
+    gMeme.lines[1].txt = text
+
+
+}
+
+function getImgs() {
 
     return gImgs
 }
 
-function setImg(img){
+function setImg(img) {
 
-    gMeme.selectedImgId= img
+    gMeme.selectedImgId = img
 }
 
-function setColor(userColor){
+function setColor(userColor) {
 
-    gMeme.lines[0].color= userColor
+    gMeme.lines[0].color = userColor
 
 }
 
-function ChangeFontSize(fontSize){
+function ChangeFontSize(fontSize) {
 
-    gMeme.lines[0].size= fontSize
+    gMeme.lines[0].size = fontSize
 
 }
 

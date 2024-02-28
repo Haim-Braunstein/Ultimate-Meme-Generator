@@ -12,7 +12,6 @@ function onInit() {
     renderGallery()
 }
 
-
 function renderMeme() {
     const mems = getMeme()
     const elImg = new Image()
@@ -24,6 +23,8 @@ function renderMeme() {
         gCtx.font = `${mems.lines[0].size + 'px'} impact`
         gCtx.fillStyle = mems.lines[0].color
         gCtx.fillText(mems.lines[0].txt, 300, 50)
+        gCtx.fillText(mems.lines[1].txt, 300, 600)
+
     }
 
 }
@@ -68,15 +69,19 @@ function downloadImg(elLink) {
 }
 
 function onAddLine() {
+    let newLineTxt = prompt('Enter new line text')
+    if (!newLineTxt) return
+    setNewLineText(newLineTxt)
+    renderMeme()
+}
+
+function onSwitchLine() {
+
     const mems = getMeme()
-    var newLineTxt = prompt('Enter new line text')
-    console.log(newLineTxt);
+    console.log(mems);
+    const lines = mems.lines
 
-    mems.lines[1].txt = newLineTxt
-
-    gCtx.font = `${mems.lines[1].size + 'px'} impact`
-    gCtx.fillStyle = mems.lines[1].color
-    gCtx.fillText(mems.lines[1].txt, 300, 600)
+    lines.findIndex(line=>line.isSelectd)
 
 }
 
