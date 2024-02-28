@@ -8,7 +8,7 @@
     <title>Ultimate Meme Generator</title>
 </head>
 
-<body class="main-layout">
+<body onload="onInit()" class="main-layout">
 
     <header class="main-header">
         <nav class="main-nav-container">
@@ -35,7 +35,10 @@
         </section>
 
         <section class="editor">
-            <div class="img-selected"></div>
+            <div class="canvas-container">
+                <canvas width="650" height="650" class="img-canvas">
+                </canvas>
+            </div>
             <div class="edit-meme">
 
             </div>
@@ -48,7 +51,9 @@
             </h4>
         </footer>
     </main>
+    <script src="js/service/meme.service.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/memeController.js"></script>
 </body>
 
 </html>
