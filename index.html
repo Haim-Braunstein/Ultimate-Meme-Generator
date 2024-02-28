@@ -28,20 +28,23 @@
 
         <section class="gallery gallery-layout ">
             <div class="filter-keyword">
-                <input type="text" oninput="onTextMeme(this.value)" class="filter-img"
+                <input type="text"class="filter-img"
                     placeholder="Enter search keyword">
             </div>
-            <div class="gallery-container">
+            <div class="gallery-container grid">
             </div>
         </section>
 
-        <section class="meme-editor" hidden>
+        <section class="meme-editor hide  " >
+            <div class="meme-editor-layout flex">
             <div class="canvas-container">
                 <canvas width="650" height="650" class="img-canvas">
                 </canvas>
             </div>
             <div class="editor">
                 <div class="editor-btn">
+                    <input type="text" oninput="onTextMeme(this.value)" class="text-meme"
+                    placeholder="Enter text">
                     <div class="color-picker-container">
                         <input type="color" class="input-color" onchange="onSetColor(this.value)">
                         <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
@@ -50,16 +53,14 @@
                         <img src="icons/decrease font - icon.png" alt=""></button>
                         <button class="increase-font-btn" onclick="onIncreaseFontSize()">
                             <img src="icons/increase font - icon.png" alt=""></button>
-
                 </div>
-
                 <div class=" actions-btn">
                     <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
                     <a href="#" class="share-btn">Share</a>
 
                 </div>
             </div>
-
+        </div>
         </section>
 
         <footer>

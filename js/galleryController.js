@@ -17,7 +17,7 @@ function onSelectImg(elImg) {
     const elMemeEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery')
     elGallery.classList.add('hide')
-    elMemeEditor.removeAttribute('hidden')
+    elMemeEditor.classList.remove('hide')
     setImg(elImg)
     renderMeme()
 }
@@ -25,6 +25,9 @@ function onSelectImg(elImg) {
 function showGallery(){
     const elMemeEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery')
+
+    if (elMemeEditor && elGallery){
     elGallery.classList.remove('hide')
-    elMemeEditor.setAttribute('hidden', true)
+    elMemeEditor.classList.add('hide')
+    }
 }

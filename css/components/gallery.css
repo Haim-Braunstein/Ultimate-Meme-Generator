@@ -1,4 +1,8 @@
-.hide{
-    display: none;
+.gallery-container{
+ grid-auto-flow: column;
+ gap: 20px;
+}
 
+.gallery-container img{
+    width: 100%;
 }
