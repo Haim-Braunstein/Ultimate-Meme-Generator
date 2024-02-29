@@ -27,26 +27,23 @@ function renderMeme() {
 
 
         mems.lines.forEach((line, index) => {
-            // Set font size and color for the current line
-            gCtx.font = `${line.size}px impact`
+            gCtx.font = `${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
 
-            // Render the text of the current line at its position
             gCtx.fillText(line.txt, line.x, line.y)
+            gCtx.strokeStyle='black'
+            gCtx.strokeText(line.txt, line.x, line.y)
 
-            // If this line is selected, draw a border around it
             if (!line.txt) return
             if (index === mems.selectedLineIdx) {
-                gCtx.strokeStyle = 'black' // Border color
-                gCtx.lineWidth = 3 // Border width
+                gCtx.strokeStyle = 'black' 
+                gCtx.lineWidth = 1 
 
-                // Calculate the width and height of the text
                 const textWidth = gCtx.measureText(line.txt).width
                 const textHeight = line.size;
 
                 onLineClicked(textWidth, textHeight)
 
-                // Draw a rectangle border around the text
                 gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
 
             }
@@ -143,7 +140,13 @@ gElCanvas.addEventListener('click', (event) => {
         setLineText(txt)
         renderMeme()
     }
-});
+})
+
+}
+
+function onChooseFont({value: font}){
+
+    setChooseFont(font)
 
 }
 

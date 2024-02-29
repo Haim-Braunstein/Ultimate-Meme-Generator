@@ -6,8 +6,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: '', size: 30, color: 'white',x:300,y:50, },
-        { txt: '', size: 30, color: 'white',x:300,y:600, }
+        { txt: '', size: 30, color: 'white',font:'impact',x:300,y:50, },
+        { txt: '', size: 30, color: 'white',font:'impact',x:300,y:600, }
     ]
 }
 
@@ -41,6 +41,11 @@ function setImg(img) {
 function setColor(userColor) {
 
     gMeme.lines[gMeme.selectedLineIdx].color = userColor
+
+}
+
+function setChooseFont(fontFamily){
+    gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
 
 }
 
