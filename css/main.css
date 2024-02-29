@@ -1,8 +1,16 @@
+/* SETUP */
 
-/* BASIC */
+@import url(setup/vars.css);
+
+/* BASICS */
 @import url(basics/helpers.css);
 
 /* COMPONENTS */
 @import url(components/editior-btn.css);
 @import url(components/gallery.css);
+@import url(components/main-header.css);
 
+body{
+    background-color: rgb(11, 65, 126);
+    width: 100vw;
+}

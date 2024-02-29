@@ -2,12 +2,16 @@
 .color-picker-container, .editor-btn button {
     width: 60px;
     height: 60px;
-    background-color: rgb(31, 116, 214);
+    background-color: var(--clrPrimary-1);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.editor-btn{
+    grid-template-columns: repeat(4,100px);
+    grid-auto-flow: row;
 }
 
 .editor-btn img {
@@ -22,3 +26,4 @@
     position: absolute;
     z-index: 1;
 }
+

@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -11,9 +9,7 @@ var gMeme = {
     ]
 }
 
-
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-
 
 
 function setLineText(text) {

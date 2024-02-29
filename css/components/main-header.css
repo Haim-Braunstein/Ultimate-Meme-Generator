@@ -1,0 +1,37 @@
+.main-header{
+    background-color:var(--clrPrimary-1);
+    height: 50px;
+    width: 100%;
+}
+
+.main-header a {
+    text-decoration: none;
+}
+
+.main-header .main-nav a {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 130px;
+    min-height: 50px;
+    font-size: 1.1875em;
+    color: var(--clrPrimary-2);
+
+}
+
+.main-header .main-nav a:hover {
+    box-shadow: inset 0px -3px 0 var(--clrPrimary-2);
+    transition: box-shadow 0.4s;
+}
+
+.logo{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-inline-start: 50px;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color:var(--clrPrimary-2);
+
+}

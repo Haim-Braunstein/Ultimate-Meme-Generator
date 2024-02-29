@@ -10,11 +10,11 @@
 
 <body onload="onInit()" class="main-layout">
 
-    <header class="main-header">
-        <nav class="main-nav-container">
+    <header class="main-header ">
+        <nav class="main-nav-container grid flow-column space-between">
             <div class="logo">memegen</div>
             <div class="main-nav">
-                <ul>
+                <ul class="clean-list grid flow-column space-between">
                     <li><a href="#">About</a></li>
                     <li><a href="#" onclick="showGallery()">Gallery</a></li>
                     <li><a href="#">Mems</a></li>
@@ -36,15 +36,22 @@
         </section>
 
         <section class="meme-editor hide  " >
-            <div class="meme-editor-layout flex">
+            <div class="meme-editor-layout grid flow-column ">
             <div class="canvas-container">
                 <canvas width="650" height="650" class="img-canvas">
                 </canvas>
             </div>
             <div class="editor">
-                <div class="editor-btn">
+                <div class="editor-btn grid flow-column align-center">
                     <input type="text" oninput="onTextMeme(this.value)" class="text-meme"
                     placeholder="Enter text">
+                    <select class="choose-font-btn btn" value="impact" onchange="onChooseFont(this)">
+                        <option value="impact">Impact</option>
+                        <option value="arial">Arial</option>
+                        <option value="cursive">Cursive</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="monospace">monospace</option>
+                    </select>
                     <div class="color-picker-container">
                         <input type="color" class="input-color" onchange="onSetColor(this.value)">
                         <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
@@ -57,13 +64,6 @@
                                 <img src="icons/add.png" alt=""></button>
                                 <button class="switch-btn btn" onclick="onSwitchLine()">
                                     <img src="icons/switch.png" alt=""></button>
-                                    <select class="choose-font-btn btn" value="impact" onchange="onChooseFont(this)">
-                                        <option value="impact">Impact</option>
-                                        <option value="arial">Arial</option>
-                                        <option value="cursive">Cursive</option>
-                                        <option value="Helvetica">Helvetica</option>
-                                        <option value="monospace">monospace</option>
-                                    </select>
                                     <button class="align-left-btn btn" onclick="onAlignLeft()">
                                         <img src="icons/align-to-left.png" alt=""></button>
                                         <button class="align-right-btn btn" onclick="onAlignRight()">
@@ -85,13 +85,13 @@
             </div>
         </div>
         </section>
-
-        <footer>
-            <div class="logo">memegen</div>
-            <h4 class="rights-reserved">© all rights reserved 2019
-            </h4>
-        </footer>
     </main>
+
+    <footer>
+        <div class="logo">memegen</div>
+        <h4 class="rights-reserved">© all rights reserved 2019
+        </h4>
+    </footer>
     <script src="js/service/meme.service.js"></script>
     <script src="js/main.js"></script>
     <script src="js/galleryController.js"></script>
