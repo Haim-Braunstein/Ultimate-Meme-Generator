@@ -19,7 +19,6 @@ function renderMeme() {
     elImg.src = `img/${mems.selectedImgId}.jpg`
 
     elImg.onload = () => {
-        console.log(mems.selectedLineIdx);
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         // gCtx.font = `${mems.lines[mems.selectedLineIdx].size + 'px'} impact`
         // gCtx.fillStyle = mems.lines[mems.selectedLineIdx].color
@@ -45,8 +44,11 @@ function renderMeme() {
                 const textWidth = gCtx.measureText(line.txt).width
                 const textHeight = line.size;
 
+                onLineClicked(textWidth, textHeight)
+
                 // Draw a rectangle border around the text
                 gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
+
             }
         })
     }
@@ -116,6 +118,38 @@ function onSwitchLine() {
 
     // SetSwitchLine(mems.selectedLineIdx)
     renderMeme()
+
+}
+
+function onLineClicked(textWidth, textHeight) {
+
+    const mems = getMeme();
+const selectedLine = mems.lines[mems.selectedLineIdx];
+console.log(selectedLine);
+console.log(); // Get the selected line
+
+// Add event listener to check for clicks on the canvas
+gElCanvas.addEventListener('click', (event) => {
+    // Get the click coordinates relative to the canvas
+    const canvasX = event.offsetX;
+    const canvasY = event.offsetY;
+
+    // Calculate the width and height of the text
+    const textWidth = gCtx.measureText(selectedLine.txt).width;
+    const textHeight = selectedLine.size; // Assuming height is equal to font size
+
+    // Calculate the position of the bottom left corner of the text
+    const textBottom = selectedLine.y; // Assuming y represents the top-left corner
+
+    // Check if the click coordinates fall within the bounding box of the selected line
+    if (canvasX >= selectedLine.x && canvasX <= selectedLine.x + textWidth &&
+        canvasY >= textBottom - textHeight && canvasY <= textBottom) {
+            // let txt = prompt('edit the txt')
+        setLineText(txt)
+        // Perform your desired action here
+        renderMeme()
+    }
+});
 
 }
 

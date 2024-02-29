@@ -1,8 +1,17 @@
 .gallery-container{
- grid-auto-flow: column;
- gap: 20px;
+
+ text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+   gap: 10px;
+ width: 100vw; 
+    height: 100vh; 
 }
 
 .gallery-container img{
     width: 100%;
+}
+
+.gallery-layout{
+    width: 100vw;
+
 }
