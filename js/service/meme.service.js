@@ -25,8 +25,6 @@ function setNewLineText(text) {
     gMeme.lines[1].txt = text
 }
 
-
-
 function getMeme() {
 
     return gMeme
@@ -48,6 +46,12 @@ function setChooseFont(fontFamily){
     gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
 
 }
+
+function removeLine(lineIdx){
+
+   gMeme.lines.splice(lineIdx, 1)
+}
+
 
 // function ChangeFontSize(fontSize) {
 //     console.log( gMeme.lines[gMeme.selectedLineIdx].size);
