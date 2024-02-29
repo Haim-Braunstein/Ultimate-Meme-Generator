@@ -17,7 +17,7 @@ var gImgs = [
     { id: 14, url: 'img/14.jpg', keywords: ['funny', 'cat'] },
     { id: 15, url: 'img/15.jpg', keywords: ['funny', 'cat'] },
     { id: 16, url: 'img/16.jpg', keywords: ['funny', 'cat'] },
-    
+
 ]
 
 
@@ -43,13 +43,13 @@ function onSelectImg(elImg) {
     renderMeme()
 }
 
-function showGallery(){
+function showGallery() {
     const elMemeEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery')
 
-    if (elMemeEditor && elGallery){
-    elGallery.classList.remove('hide')
-    elMemeEditor.classList.add('hide')
+    if (elMemeEditor && elGallery) {
+        elGallery.classList.remove('hide')
+        elMemeEditor.classList.add('hide')
     }
 }
 

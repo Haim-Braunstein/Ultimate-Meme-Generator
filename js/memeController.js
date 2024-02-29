@@ -126,27 +126,21 @@ function onLineClicked(textWidth, textHeight) {
     const mems = getMeme();
 const selectedLine = mems.lines[mems.selectedLineIdx];
 console.log(selectedLine);
-console.log(); // Get the selected line
+console.log(); 
 
-// Add event listener to check for clicks on the canvas
 gElCanvas.addEventListener('click', (event) => {
-    // Get the click coordinates relative to the canvas
+   
     const canvasX = event.offsetX;
     const canvasY = event.offsetY;
 
-    // Calculate the width and height of the text
     const textWidth = gCtx.measureText(selectedLine.txt).width;
-    const textHeight = selectedLine.size; // Assuming height is equal to font size
+    const textHeight = selectedLine.size;
 
-    // Calculate the position of the bottom left corner of the text
-    const textBottom = selectedLine.y; // Assuming y represents the top-left corner
+    const textBottom = selectedLine.y; 
 
-    // Check if the click coordinates fall within the bounding box of the selected line
     if (canvasX >= selectedLine.x && canvasX <= selectedLine.x + textWidth &&
         canvasY >= textBottom - textHeight && canvasY <= textBottom) {
-            // let txt = prompt('edit the txt')
         setLineText(txt)
-        // Perform your desired action here
         renderMeme()
     }
 });
