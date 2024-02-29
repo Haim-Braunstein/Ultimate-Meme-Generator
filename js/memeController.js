@@ -19,15 +19,39 @@ function renderMeme() {
     elImg.src = `img/${mems.selectedImgId}.jpg`
 
     elImg.onload = () => {
+        console.log(mems.selectedLineIdx);
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        gCtx.font = `${mems.lines[0].size + 'px'} impact`
-        gCtx.fillStyle = mems.lines[0].color
-        gCtx.fillText(mems.lines[0].txt, 300, 50)
-        gCtx.fillText(mems.lines[1].txt, 300, 600)
+        // gCtx.font = `${mems.lines[mems.selectedLineIdx].size + 'px'} impact`
+        // gCtx.fillStyle = mems.lines[mems.selectedLineIdx].color
+        // gCtx.fillText(mems.lines[mems.selectedLineIdx].txt, mems.lines[mems.selectedLineIdx].x, mems.lines[mems.selectedLineIdx].y)
+        // gCtx.fillText(mems.lines[1].txt, 300, 600)
 
+
+        mems.lines.forEach((line, index) => {
+            // Set font size and color for the current line
+            gCtx.font = `${line.size}px impact`
+            gCtx.fillStyle = line.color
+
+            // Render the text of the current line at its position
+            gCtx.fillText(line.txt, line.x, line.y)
+
+            // If this line is selected, draw a border around it
+            if (!line.txt) return
+            if (index === mems.selectedLineIdx) {
+                gCtx.strokeStyle = 'black' // Border color
+                gCtx.lineWidth = 3 // Border width
+
+                // Calculate the width and height of the text
+                const textWidth = gCtx.measureText(line.txt).width
+                const textHeight = line.size;
+
+                // Draw a rectangle border around the text
+                gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
+            }
+        })
     }
-
 }
+
 
 function onTextMeme(txt) {
     setLineText(txt)
@@ -39,27 +63,32 @@ function onSetColor(elInputColor) {
 }
 
 function onDecreaseFontSize() {
-    var mems = getMeme()
-    var fontSize = mems.lines[0].size
-    if (fontSize > 1) {
-        fontSize--
-        gCtx.font = fontSize + 'px'
-        renderMeme()
+    const mems = getMeme()
+
+    const selectedLineIdx = mems.selectedLineIdx;
+    const selectedLine = mems.lines[selectedLineIdx]
+
+    if (selectedLine.size > 1) {
+        selectedLine.size--;
     }
 
-    ChangeFontSize(fontSize)
+    gCtx.font = selectedLine.size + 'px impact';
+    renderMeme()
 }
 
 function onIncreaseFontSize() {
-    var mems = getMeme()
-    var fontSize = mems.lines[0].size
-    if (fontSize > 1) {
-        fontSize++
-        gCtx.font = fontSize + 'px'
-        renderMeme()
+    const mems = getMeme()
+
+    const selectedLineIdx = mems.selectedLineIdx;
+    const selectedLine = mems.lines[selectedLineIdx]
+    if (selectedLine.size > 1) {
+        selectedLine.size++
+        gCtx.font = selectedLine.size + 'px'
     }
 
-    ChangeFontSize(fontSize)
+    gCtx.font = selectedLine.size + 'px impact';
+    renderMeme()
+
 }
 
 function downloadImg(elLink) {
@@ -78,14 +107,17 @@ function onAddLine() {
 function onSwitchLine() {
 
     const mems = getMeme()
-    console.log(mems);
-    const lines = mems.lines
+    console.log(mems)
+    mems.selectedLineIdx++
 
-    lines.findIndex(line=>line.isSelectd)
+    if (mems.selectedLineIdx >= mems.lines.length) {
+        mems.selectedLineIdx = 0
+    }
+
+    // SetSwitchLine(mems.selectedLineIdx)
+    renderMeme()
 
 }
-
-
 
 
 
