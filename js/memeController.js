@@ -4,6 +4,7 @@ let gElCanvas
 let gCtx
 let isDragging = false
 let gStartPos
+const MEME_DB = 'memeDB'
 
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
 
@@ -12,7 +13,9 @@ function onInit() {
     gElCanvas = document.querySelector('.img-canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    renderMeme()
+    // window.addEventListener('resize', resizeCanvas)
+
+            renderMeme()
     renderGallery()
 }
 
@@ -44,18 +47,29 @@ function renderMeme() {
                 onLineClicked(textWidth, textHeight)
 
                 gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
-
             }
         })
     }
 }
 
+function resizeCanvas() {
+	const elContainer = document.querySelector('.canvas-container')
+
+	gElCanvas.width = elContainer.offsetWidth
+	gElCanvas.height = elContainer.offsetHeight
+
+
+    // Redraw the image on the resized canvas
+    renderMeme();
+
+}
 
 function onTextMeme(txt) {
     const selectedLine = onLineClicked()
 
     setLineText(txt,selectedLine)
     renderMeme()
+
 }
 
 function onSetColor(elInputColor) {
@@ -69,7 +83,7 @@ function onDecreaseFontSize() {
     const selectedLine = mems.lines[selectedLineIdx]
 
     if (selectedLine.size > 1) {
-        selectedLine.size--;
+        selectedLine.size-=5
     }
 
     gCtx.font = selectedLine.size + 'px impact';
@@ -82,7 +96,7 @@ function onIncreaseFontSize() {
     const selectedLineIdx = mems.selectedLineIdx;
     const selectedLine = mems.lines[selectedLineIdx]
     if (selectedLine.size > 1) {
-        selectedLine.size++
+        selectedLine.size+=5
         gCtx.font = selectedLine.size + 'px'
     }
 
@@ -102,7 +116,6 @@ function onAddLine() {
 
     addLine()
     renderMeme()
-
 }
 
 function onSwitchLine() {
@@ -231,6 +244,13 @@ function onChooseFont({ value: font }) {
 
 }
 
+function onAlignLeft() {
+    const selectedLine = onLineClicked()
+    const textWidth = gCtx.measureText(selectedLine.txt).width
+    selectedLine.x = 0+selectedLine.size
+    renderMeme()
+}
+
 function onAlignRight() {
     const selectedLine = onLineClicked()
     const textWidth = gCtx.measureText(selectedLine.txt).width
@@ -263,11 +283,48 @@ function onPositionDown() {
 function onRemoveLine() {
     const mems = getMeme()
 
-    const selectedLine = onLineClicked()
+    // const selectedLine = onLineClicked()
     removeLine(mems.selectedLineIdx)
     renderMeme()
 }
 
+
+function onSaveMeme() {
+
+    localStorage.setItem('canvas', gElCanvas.toDataURL());
+}
+
+function showMeme(){
+    const elMemeEditor = document.querySelector('.meme-editor');
+    const elGallery = document.querySelector('.gallery');
+    const elMemeSaved=document.querySelector('.memes-saved')
+    
+    // Hide the gallery and meme editor
+    elGallery.classList.add('hide');
+    elMemeEditor.classList.add('hide');
+    elMemeSaved.classList.remove('hide');
+
+    // Load the saved canvas content from local storage
+    const savedCanvasData = localStorage.getItem('canvas');
+
+    if (savedCanvasData) {
+        // Create a new image element
+        const img = new Image();
+        
+        // Set the src attribute to the saved canvas data URL
+        img.src = savedCanvasData;
+
+        // Ensure the image is loaded before drawing it on the canvas
+        img.onload = function () {
+            gCtx.drawImage(img, 0, 0);
+            
+            // Optionally, render any additional elements on top of the canvas
+            renderMeme();
+        };
+    } else {
+        console.log('No saved meme found.');
+    }
+}
 
 
 

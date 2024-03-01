@@ -24,7 +24,6 @@ function addLine(randomText) {
 }
 
 function _createLine(randomText) {
-    console.log(randomText);
     const fontSize = 30
     const lineHeight = fontSize + 5
     const linesCount = gMeme.lines.length
@@ -35,7 +34,7 @@ function _createLine(randomText) {
         size: fontSize,
         color: 'white',
         font: 'impact',
-        x: 300 - fontSize,
+        x: 150,
         y: y
     }
 }
@@ -69,6 +68,10 @@ function setChooseFont(fontFamily) {
 function removeLine(lineIdx) {
 
     gMeme.lines.splice(lineIdx, 1)
+}
+
+function _saveMems() {
+    saveToStorage(MEME_DB, gBooks)
 }
 
 

@@ -17,7 +17,7 @@
                 <ul class="clean-list grid flow-column space-between">
                     <li><a href="#">About</a></li>
                     <li><a href="#" onclick="showGallery()">Gallery</a></li>
-                    <li><a href="#">Mems</a></li>
+                    <li><a href="#"onclick="showMeme()">Mems</a></li>
                 </ul>
             </div>
             </ul>
@@ -25,6 +25,10 @@
     </header>
 
     <main class="main-container">
+
+        <section class="memes-saved hide">
+
+        </section>
 
         <section class="gallery gallery-layout ">
             <div class="filter-keyword">
@@ -36,7 +40,7 @@
             </div>
         </section>
 
-        <section class="meme-editor hide  " >
+        <section class="meme-editor hide h " >
             <div class="meme-editor-layout grid flow-column ">
             <div class="canvas-container">
                 <canvas onmousedown="onMouseDown(event)" width="650" height="650" class="img-canvas">
@@ -80,6 +84,7 @@
                 </div>
                 <div class=" actions-btn">
                     <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#" class="save-btn" onclick="onSaveMeme()">Save</a>
                     <a href="#" class="share-btn">Share</a>
 
                 </div>

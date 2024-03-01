@@ -1,6 +1,6 @@
 'use strict'
 
-var gImgs = [
+const gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
     { id: 3, url: 'img/3.jpg', keywords: ['funny', 'cat'] },
@@ -20,6 +20,18 @@ var gImgs = [
 
 ]
 
+const textMem = [
+    '404 Brain Not Found',
+    'Me: starts diet. Also me: eats pizza',
+    'Ctrl + Alt + Delete Your Problems',
+    'Just Stack Overflow Things',
+    'Code Happens',
+    'Keep Calm and Commit Often',
+    'Me in the shower: hot water, please!',
+    'Syntax Error: Coffee Not Found',
+    'Im Not Lazy, Im in Energy Saving Mode'
+]
+
 
 function renderGallery() {
     const imgs = getImgs()
@@ -30,7 +42,6 @@ function renderGallery() {
 
       `
     })
-
     elGallery.innerHTML = strHtmls.join('')
 }
 
@@ -58,17 +69,6 @@ function getImgs() {
     return gImgs
 }
 
-const textMem = [
-    '404 Brain Not Found',
-    'I Code, Therefore I Am',
-    'Ctrl + Alt + Delete Your Problems',
-    'Just Stack Overflow Things',
-    'Code Happens',
-    'Keep Calm and Commit Often',
-    'Code Hard, Test Harder',
-    'Syntax Error: Coffee Not Found',
-    'Im Not Lazy, Im in Energy Saving Mode'
-]
 
 function randomMeme(){
 
