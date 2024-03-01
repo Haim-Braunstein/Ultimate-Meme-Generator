@@ -8,8 +8,6 @@ let gStartPos
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
 
 
-
-
 function onInit() {
     gElCanvas = document.querySelector('.img-canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -26,11 +24,6 @@ function renderMeme() {
 
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        // gCtx.font = `${mems.lines[mems.selectedLineIdx].size + 'px'} impact`
-        // gCtx.fillStyle = mems.lines[mems.selectedLineIdx].color
-        // gCtx.fillText(mems.lines[mems.selectedLineIdx].txt, mems.lines[mems.selectedLineIdx].x, mems.lines[mems.selectedLineIdx].y)
-        // gCtx.fillText(mems.lines[1].txt, 300, 600)
-
 
         mems.lines.forEach((line, index) => {
             gCtx.font = `${line.size}px ${line.font}`
@@ -112,7 +105,6 @@ function onAddLine() {
 
 }
 
-
 function onSwitchLine() {
     const mems = getMeme()
     mems.selectedLineIdx++
@@ -123,7 +115,6 @@ function onSwitchLine() {
 
     // SetSwitchLine(mems.selectedLineIdx)
     renderMeme()
-
 }
 
 function onLineClicked() {
@@ -131,29 +122,23 @@ function onLineClicked() {
     const mems = getMeme()
     const selectedLine = mems.lines[mems.selectedLineIdx]
 
-    gElCanvas.addEventListener('click', (event) => {
-        const canvasX = event.offsetX;
-        const canvasY = event.offsetY;
+    // gElCanvas.addEventListener('click', (event) => {
+    //     const canvasX = event.offsetX;
+    //     const canvasY = event.offsetY;
 
-        // Loop through each line of text to find the clicked line
-        mems.lines.forEach((line, index) => {
-            const textWidth = gCtx.measureText(line.txt).width;
-            const textHeight = line.size;
+    //     mems.lines.forEach((line, index) => {
+    //         const textWidth = gCtx.measureText(line.txt).width;
+    //         const textHeight = line.size;
 
-            const textBottom = line.y 
+    //         const textBottom = line.y 
 
-            // Check if the click coordinates fall within the bounding box of the text
-            if (canvasX >= line.x && canvasX <= line.x + textWidth &&
-                canvasY >= line.y && canvasY <= textBottom) {
-                // The line is clicked
-                // console.log('Clicked on line:', line);
 
-                // Assuming you have a function to allow editing text
-                // editLine(index)
-                 // Pass the index of the clicked line to the editLine function
-            }
-        });
-    });
+    //         if (canvasX >= line.x && canvasX <= line.x + textWidth &&
+    //             canvasY >= line.y && canvasY <= textBottom) {
+               
+    //         }
+    //     });
+    // });
 
     return selectedLine
 
@@ -167,10 +152,9 @@ function getEvPos(ev) {
 
 	if (TOUCH_EVENTS.includes(ev.type)) {
 		
-		ev.preventDefault()         // Prevent triggering the mouse events
-		ev = ev.changedTouches[0]   // Gets the first touch point
+		ev.preventDefault()         
+		ev = ev.changedTouches[0]   
 
-		// Calc pos according to the touch screen
 		pos = {
 			x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
 			y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
@@ -192,14 +176,13 @@ function onMouseDown(ev) {
 
         return offsetX >= x && offsetX <= x + textWidth &&
                offsetY >= y - textHeight && offsetY <= y
-    });
+    })
 
     if (clickedLine) {
         handleClickedLine(clickedLine)    
         isDragging = true;
         gStartPos = getEvPos(ev)
 
-    // Add event listeners to handle dragging
     gElCanvas.addEventListener('mousemove', onMouseMove);
     gElCanvas.addEventListener('mouseup', onMouseUp);
     }
@@ -212,29 +195,23 @@ function onMouseMove(ev) {
         
         const { offsetX, offsetY } = ev;
         const pos = getEvPos(ev)
-
-
-        // Calculate the distance moved by the mouse
+  
         const dx = offsetX - gStartPos.x;
         const dy = offsetY - gStartPos.y;
-
-        // Update the position of the selected line
+  
         selectedLine.x += dx;
         selectedLine.y += dy;
 
-        // Update start position for next mouse move
         gStartPos = pos;
 
-        // Re-render the canvas to reflect the updated position of the text line
-        renderMeme();
+        renderMeme()
     }
 }
 
 function onMouseUp() {
-    // Deactivate dragging mode
-    isDragging = false;
     
-    // Remove event listeners for dragging
+    isDragging = false
+    
     gElCanvas.removeEventListener('mousemove', onMouseMove);
     gElCanvas.removeEventListener('mouseup', onMouseUp);
 }
