@@ -59,8 +59,7 @@ function resizeCanvas() {
 	gElCanvas.height = elContainer.offsetHeight
 
 
-    // Redraw the image on the resized canvas
-    renderMeme();
+    renderMeme()
 
 }
 

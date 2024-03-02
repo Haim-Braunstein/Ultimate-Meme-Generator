@@ -60,6 +60,14 @@ function setColor(userColor) {
 
 }
 
+function _filterImgs(filterBy) {
+    gFilterBy = filterBy
+}
+
+function clearFilter() {
+    gFilterBy = ''
+}
+
 function setChooseFont(fontFamily) {
     gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
 

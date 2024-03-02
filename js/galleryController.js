@@ -1,22 +1,26 @@
 'use strict'
 
+let gFilterBy
+
 const gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'img/1.jpg', keywords: ['president', 'politics'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['funny', 'dog'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['baby', 'dog'] },
     { id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'img/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'img/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'img/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'img/10.jpg', keywords: ['funny', 'cat'] },
-    { id: 11, url: 'img/11.jpg', keywords: ['funny', 'cat'] },
-    { id: 12, url: 'img/12.jpg', keywords: ['funny', 'cat'] },
-    // { id: 13, url: 'img/13.jpg', keywords: ['funny', 'cat'] },
-    // { id: 14, url: 'img/14.jpg', keywords: ['funny', 'cat'] },
-    // { id: 15, url: 'img/15.jpg', keywords: ['funny', 'cat'] },
-    // { id: 16, url: 'img/16.jpg', keywords: ['funny', 'cat1'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'baby'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['movie', 'funny'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['baby', 'surprise'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['crazy', 'funny'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['baby', 'funny'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['president', 'politics'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['crazy', 'sport'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['crazy', 'funny'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['funny', 'movie'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['movie', 'funny'] },
+    { id: 15, url: 'img/15.jpg', keywords: ['funny', 'movie'] },
+    { id: 16, url: 'img/16.jpg', keywords: ['funny', 'movie'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['president', 'politics'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['movie', 'funny'] },
 
 ]
 
@@ -31,7 +35,6 @@ const textMem = [
     'Syntax Error: Coffee Not Found',
     'Im Not Lazy, Im in Energy Saving Mode'
 ]
-
 
 function renderGallery() {
     const imgs = getImgs()
@@ -54,6 +57,20 @@ function onSelectImg(elImg) {
     renderMeme()
 }
 
+function onSetFilterBy(val) {
+      _filterImgs(val)
+    renderGallery()
+
+}
+
+function onClearFilter(){
+
+    const elFilterCategory =document.querySelector('.filter-category')
+    elFilterCategory.value=''
+    clearFilter()
+    renderGallery()
+}
+
 function showGallery() {
     const elMemeEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery')
@@ -65,24 +82,24 @@ function showGallery() {
 }
 
 function getImgs() {
-
-    return gImgs
+    if (!gFilterBy) {
+        return gImgs
+    }
+    const filteredImgs = gImgs.filter(img => img.keywords.includes(gFilterBy))
+    return  filteredImgs
 }
 
 
-function randomMeme(){
+function randomMeme() {
+    const imgs = getImgs()
 
-    const randomTextIdx= getRandomIntInclusive(0, textMem.length-1)
+    const randomTextIdx = getRandomIntInclusive(0, textMem.length - 1)
     addLine(textMem[randomTextIdx])
-    console.log(textMem[randomTextIdx]);
 
+    const randomImgIdx = getRandomIntInclusive(0, imgs.length - 1)
+    const img = imgs[randomImgIdx]
+    onSelectImg(img.id)
 
-    const imgs=getImgs()
-
-const randomImgIdx=  getRandomIntInclusive(0, imgs.length-1)
-const img= imgs[randomImgIdx]
-onSelectImg(img.id)
-     
 }
 
 

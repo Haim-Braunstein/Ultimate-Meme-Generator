@@ -17,7 +17,7 @@
                 <ul class="clean-list grid flow-column space-between">
                     <li><a href="#">About</a></li>
                     <li><a href="#" onclick="showGallery()">Gallery</a></li>
-                    <li><a href="#"onclick="showMeme()">Mems</a></li>
+                    <li><a href="#" onclick="showMeme()">Mems</a></li>
                 </ul>
             </div>
             </ul>
@@ -32,64 +32,76 @@
 
         <section class="gallery gallery-layout ">
             <div class="filter-keyword">
-                <input type="text"class="filter-img"
-                    placeholder="Enter search keyword">
-                    <button class="flexible" onclick=" randomMeme()">i'm flexible</button>
-            </div>
+                    <label for="filter-keyword"></label>
+                    <input list="category" onchange="onSetFilterBy(this.value)" placeholder="Category" class="filter-category" >
+                    <datalist id="category" >
+                        <option value="movie">
+                        <option value="baby">
+                        <option value="dog">
+                        <option value="cat">
+                        <option value="president">
+                        <option value="funny">
+                        <option value="crazy">
+                            <option value="sport">
+                    </datalist>
+                    <button class="filter-clear-btn" onclick="onClearFilter()">Clear</button>
+
+                </div>
+
+                <button class="flexible" onclick=" randomMeme()">i'm flexible</button>
             <div class="gallery-container grid">
             </div>
         </section>
 
-        <section class="meme-editor hide h " >
+        <section class="meme-editor hide h ">
             <div class="meme-editor-layout grid flow-column ">
-            <div class="canvas-container">
-                <canvas onmousedown="onMouseDown(event)" width="650" height="650" class="img-canvas">
-                </canvas>
-            </div>
-            <div class="editor">
-                <div class="editor-btn grid flow-column align-center">
-                    <input type="text" oninput="onTextMeme(this.value)" class="text-meme"
-                    placeholder="Enter text">
-                    <select class="choose-font-btn btn" value="impact" onchange="onChooseFont(this)">
-                        <option value="impact">Impact</option>
-                        <option value="arial">Arial</option>
-                        <option value="cursive">Cursive</option>
-                        <option value="helvetica">Helvetica</option>
-                        <option value="monospace">monospace</option>
-                    </select>
-                    <div class="color-picker-container">
-                        <input type="color" class="input-color" onchange="onSetColor(this.value)">
-                        <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
-                    </div>
-                    <button class="decrease-font-btn btn" onclick="onDecreaseFontSize()">
-                        <img src="icons/decrease font - icon.png" alt=""></button>
+                <div class="canvas-container">
+                    <canvas onmousedown="onMouseDown(event)" width="650" height="650" class="img-canvas">
+                    </canvas>
+                </div>
+                <div class="editor">
+                    <div class="editor-btn grid flow-column align-center">
+                        <input type="text" oninput="onTextMeme(this.value)" class="text-meme" placeholder="Enter text">
+                        <select class="choose-font-btn btn" value="impact" onchange="onChooseFont(this)">
+                            <option value="impact">Impact</option>
+                            <option value="arial">Arial</option>
+                            <option value="cursive">Cursive</option>
+                            <option value="helvetica">Helvetica</option>
+                            <option value="monospace">monospace</option>
+                        </select>
+                        <div class="color-picker-container">
+                            <input type="color" class="input-color" onchange="onSetColor(this.value)">
+                            <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
+                        </div>
+                        <button class="decrease-font-btn btn" onclick="onDecreaseFontSize()">
+                            <img src="icons/decrease font - icon.png" alt=""></button>
                         <button class="increase-font-btn btn" onclick="onIncreaseFontSize()">
                             <img src="icons/increase font - icon.png" alt=""></button>
-                            <button class="add-line-btn btn" onclick="onAddLine()">
-                                <img src="icons/add.png" alt=""></button>
-                                <button class="switch-btn btn" onclick="onSwitchLine()">
-                                    <img src="icons/switch.png" alt=""></button>
-                                    <button class="align-left-btn btn" onclick="onAlignLeft()">
-                                        <img src="icons/align-to-left.png" alt=""></button>
-                                        <button class="align-right-btn btn" onclick="onAlignRight()">
-                                            <img src="icons/align-to-right.png" alt=""></button>
-                                            <button class="align-center-btn btn" onclick="onAlignCenter()">
-                                                <img src="icons/center-text-alignment.png" alt=""></button>
-                                                <button class="position-down-btn btn" onclick="onPositionDown()">
-                                                    <img src="icons/arrow down.png" alt=""></button>
-                                                    <button class="position-up-btn btn" onclick="onPositionUp()">
-                                                        <img src="icons/arrow up.png" alt=""></button>
-                                                        <button class="remove-line-btn btn" onclick="onRemoveLine()">
-                                                            <img src="icons/trash.png" alt=""></button>
-                </div>
-                <div class=" actions-btn">
-                    <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
-                    <a href="#" class="save-btn" onclick="onSaveMeme()">Save</a>
-                    <a href="#" class="share-btn">Share</a>
+                        <button class="add-line-btn btn" onclick="onAddLine()">
+                            <img src="icons/add.png" alt=""></button>
+                        <button class="switch-btn btn" onclick="onSwitchLine()">
+                            <img src="icons/switch.png" alt=""></button>
+                        <button class="align-left-btn btn" onclick="onAlignLeft()">
+                            <img src="icons/align-to-left.png" alt=""></button>
+                        <button class="align-right-btn btn" onclick="onAlignRight()">
+                            <img src="icons/align-to-right.png" alt=""></button>
+                        <button class="align-center-btn btn" onclick="onAlignCenter()">
+                            <img src="icons/center-text-alignment.png" alt=""></button>
+                        <button class="position-down-btn btn" onclick="onPositionDown()">
+                            <img src="icons/arrow down.png" alt=""></button>
+                        <button class="position-up-btn btn" onclick="onPositionUp()">
+                            <img src="icons/arrow up.png" alt=""></button>
+                        <button class="remove-line-btn btn" onclick="onRemoveLine()">
+                            <img src="icons/trash.png" alt=""></button>
+                    </div>
+                    <div class=" actions-btn">
+                        <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                        <a href="#" class="save-btn" onclick="onSaveMeme()">Save</a>
+                        <a href="#" class="share-btn">Share</a>
 
+                    </div>
                 </div>
             </div>
-        </div>
         </section>
     </main>
 
