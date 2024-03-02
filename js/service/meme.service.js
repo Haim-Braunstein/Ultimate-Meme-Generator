@@ -3,9 +3,9 @@
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: []
-    // { txt: '', size: 30, color: 'white',font:'impact',x:300,y:50, },
-    // { txt: '', size: 30, color: 'white',font:'impact',x:300,y:600, }
+    lines: [
+            { txt: 'Text here', size: 30, color: 'white',font:'impact',x:300,y:50, },
+    ]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -13,7 +13,6 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function setLineText(text, selectedLine) {
     selectedLine.txt = text
-
 }
 
 function addLine(randomText) {
@@ -38,10 +37,6 @@ function _createLine(randomText) {
         y: y
     }
 }
-
-// function setNewLineText(text) {
-//     gMeme.lines[1].txt = text
-// }
 
 function getMeme() {
 
@@ -81,17 +76,4 @@ function removeLine(lineIdx) {
 function _saveMems() {
     saveToStorage(MEME_DB, gBooks)
 }
-
-
-// function ChangeFontSize(fontSize) {
-//     console.log( gMeme.lines[gMeme.selectedLineIdx].size);
-
-//     gMeme.lines[gMeme.selectedLineIdx].size = fontSize
-
-// }
-
-// function setSwitchLine(lineIdx) {
-
-//     gMeme.selectedLineIdx = lineIdx
-// }
 

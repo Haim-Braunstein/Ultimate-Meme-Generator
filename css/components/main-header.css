@@ -1,12 +1,18 @@
 .main-header{
     background-color:var(--clrPrimary-1);
-    height: 50px;
+    height: 3.2rem;
     width: 100%;
+
 }
 
 .main-header a {
     text-decoration: none;
 }
+
+ .main-heading{
+    font-size: 2rem;
+    color: white;
+ }
 
 .main-header .main-nav a {
     display: grid;
@@ -34,4 +40,65 @@
     font-size: 1.5em;
     color:var(--clrPrimary-2);
 
+}
+
+.filter-category{
+    background-color: white;
+    width: max-content;
+    height: 30px;
+    border: 2px solid var(--clrPrimary-1);
+    /* background-color: var(--clrPrimary-1); */
+    border-radius: 10px;
+}
+
+.filter-keyword button{
+    width: max-content;
+    height: 40px;
+    color: white;
+}
+
+.main-header .btn-toggle-menu {
+    background-color: inherit;
+    border: 0;
+    cursor: pointer;
+}
+
+.main-header .btn-toggle-menu .hamburger-lines {
+    height: 26px;
+    width: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-header .btn-toggle-menu .hamburger-lines .line {
+    height: 4px;
+    width: 100%;
+    background-color: aliceblue;
+    transition: 0.4s;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line1 {
+    rotate: -45deg;
+    transform-origin: right top;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line2 {
+    scale: 0;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line3 {
+    rotate: 45deg;
+    transform-origin: right bottom;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    /* z-index: -1; */
+    pointer-events: none;
+    background-color: rgb(177, 177, 177, .6);
+
+    opacity: 0;
 }

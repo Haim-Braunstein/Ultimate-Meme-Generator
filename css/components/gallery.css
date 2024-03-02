@@ -1,20 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+
 .gallery-container{
 
  text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-   gap: 10px;
- width: 100vw; 
-    height: 100vh; 
-    
+ grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+ justify-content: center;
+ gap: 20px;
+
 }
+
+
 
 .gallery-container img{
-    width: 100%;
     border-radius: 3em;
     box-shadow: -2px 4px 6px 0px black;
-}
-
-.gallery-layout{
-    width: 100vw;
+    max-width:100%;
+    height:auto;
 
 }
+

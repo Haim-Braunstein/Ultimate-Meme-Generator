@@ -3,6 +3,7 @@
 @import url(setup/vars.css);
 
 /* BASICS */
+@import url(basics/base.css);
 @import url(basics/helpers.css);
 @import url(basics/layout.css);
 
@@ -10,8 +11,7 @@
 @import url(components/editior-btn.css);
 @import url(components/gallery.css);
 @import url(components/main-header.css);
+@import url(components/footer.css);
 
-body{
-    background-color: rgb(11, 65, 126);
-    width: 100vw;
-}
+/* MEDIA QUERIES */
+@import url(setup/mq.css);

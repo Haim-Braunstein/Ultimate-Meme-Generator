@@ -39,11 +39,11 @@ const textMem = [
 function renderGallery() {
     const imgs = getImgs()
     const elGallery = document.querySelector('.gallery-container')
+
     let strHtmls = imgs.map(img => {
         return `
-      <img src="${img.url}" class="img${img.id}" onclick="onSelectImg(${img.id})" alt="">
-
-      `
+            <img src="${img.url}" class="img${img.id}" onclick="onSelectImg(${img.id})" alt="">
+        `
     })
     elGallery.innerHTML = strHtmls.join('')
 }
@@ -54,19 +54,21 @@ function onSelectImg(elImg) {
     elGallery.classList.add('hide')
     elMemeEditor.classList.remove('hide')
     setImg(elImg)
+    // resizeCanvas()
+
     renderMeme()
 }
 
 function onSetFilterBy(val) {
-      _filterImgs(val)
+    _filterImgs(val)
     renderGallery()
 
 }
 
-function onClearFilter(){
+function onClearFilter() {
 
-    const elFilterCategory =document.querySelector('.filter-category')
-    elFilterCategory.value=''
+    const elFilterCategory = document.querySelector('.filter-category')
+    elFilterCategory.value = ''
     clearFilter()
     renderGallery()
 }
@@ -79,6 +81,7 @@ function showGallery() {
         elGallery.classList.remove('hide')
         elMemeEditor.classList.add('hide')
     }
+
 }
 
 function getImgs() {
@@ -86,20 +89,18 @@ function getImgs() {
         return gImgs
     }
     const filteredImgs = gImgs.filter(img => img.keywords.includes(gFilterBy))
-    return  filteredImgs
+    return filteredImgs
 }
-
 
 function randomMeme() {
     const imgs = getImgs()
 
-    const randomTextIdx = getRandomIntInclusive(0, textMem.length - 1)
+        const randomTextIdx = getRandomIntInclusive(0, textMem.length - 1)
     addLine(textMem[randomTextIdx])
 
     const randomImgIdx = getRandomIntInclusive(0, imgs.length - 1)
     const img = imgs[randomImgIdx]
     onSelectImg(img.id)
-
 }
 
 

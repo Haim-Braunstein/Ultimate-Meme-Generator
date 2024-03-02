@@ -1,0 +1,46 @@
+/* MOBILE ONLY */
+@media (max-width: 860px) {
+
+    .btn-toggle-menu{
+        display: block;
+    }
+    .main-header {
+        padding: 20px 0;
+        min-height: 70px;
+    }
+
+    .main-header .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+        transition: grid-template-rows 1s;
+        align-items: end;
+    }
+
+    .main-header .main-nav ul {
+        min-height: 0;
+        grid-auto-flow: row;
+        background-color: var(--clrPrimary2);
+    }
+
+    .main-header .main-nav li {
+        border-bottom: 1px solid #ccc;
+    }
+
+    body.menu-open .main-nav {
+        grid-template-rows: 1fr;
+    }
+
+    .meme-editor {
+        grid-template-columns: 1fr; 
+        max-height: 100vh;
+    }
+
+ 
+
+
+}
