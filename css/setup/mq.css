@@ -1,9 +1,80 @@
 /* MOBILE ONLY */
 @media (max-width: 860px) {
 
-    .btn-toggle-menu{
+
+        .toggle-menu {
+            display: block;
+            z-index: 3000;
+        }
+    
+        .header {
+            padding: 10px 0;
+            min-height: 60px;
+        }
+
+        
+    
+        .header .nav {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: height 0.5s;
+            background-color: var(--clrPrimary2);
+            height: 0;
+            z-index: 1000;
+        }
+    
+        .header .nav.open {
+            height: auto;
+        }
+    
+        .header .nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    
+        .header .nav li {
+            border-bottom: 1px solid #ccc;
+        }
+    
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+    
+        .gallery-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .meme-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+    
+        .editor-btn {
+            margin: 5px;
+        }
+    
+
+
+
+
+    .btn-toggle-menu {
         display: block;
     }
+
     .main-header {
         padding: 20px 0;
         min-height: 70px;
@@ -27,16 +98,6 @@
         background-color: var(--clrPrimary2);
     }
 
-    .gallery-container{
-
-        text-align: center;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-                justify-content: center;
-        gap: 1.2em;
-       
-       }
-
     .main-header .main-nav li {
         border-bottom: 1px solid #ccc;
     }
@@ -46,41 +107,24 @@
     }
 
     .meme-editor-layout {
-       flex-direction: column;
-       flex-wrap: wrap;
-        /* max-height: 100vh; */
+        flex-direction: column;
         align-items: center;
 
     }
 
-
-    .editor{
-        margin-inline-end: -262px;
+    .editor {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         align-items: center;
 
     }
-    .editor-btn{
-        gap: 0.5em;
-        margin-inline-end: 17.125em ;
+
+    .editor-btn {
+        gap: 0.3em;
     }
-  
 
-    .gallery-container{
-
-        text-align: center;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        justify-content: center;
-        gap: 20px;
-       
-       }
-
-       canvas{
-        max-width: 100%;
+    .main-nav{
+        z-index: 3000;
     }
-    
-
-
 }

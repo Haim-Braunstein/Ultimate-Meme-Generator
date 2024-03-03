@@ -12,7 +12,8 @@ const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('.img-canvas')
     gCtx = gElCanvas.getContext('2d')
-
+     
+    // resizeCanvas()
     renderMeme()
     renderGallery()
 }
@@ -41,7 +42,7 @@ function renderMeme() {
                 const textWidth = gCtx.measureText(line.txt).width
                 const textHeight = line.size;
 
-                onLineClicked(textWidth, textHeight)
+                onLineClicked(mems.selectedLineIdx)
 
                 gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
             }
@@ -60,9 +61,10 @@ function resizeCanvas() {
 
 function onTextMeme({value, placeholder}) {
     const selectedLine = onLineClicked()
-    placeholder=value
 
     setLineText(value, selectedLine)
+    placeholder=value
+
     renderMeme()
 
 }
@@ -121,6 +123,7 @@ function onSwitchLine() {
 
     if (mems.selectedLineIdx >= mems.lines.length) {
         mems.selectedLineIdx = 0
+        
     }
     renderMeme()
 }
@@ -131,6 +134,7 @@ function onLineClicked() {
     const selectedLine = mems.lines[mems.selectedLineIdx]
     const elTextMeme = document.querySelector('.text-meme')
     elTextMeme.placeholder = selectedLine.txt
+    renderMeme()
 
     return selectedLine
 }
@@ -157,6 +161,7 @@ function getEvPos(ev) {
 function onMouseDown(ev) {
     const mems = getMeme()
     const lines = mems.lines;
+    var elTextMeme = document.querySelector('.text-meme')
 
     const { offsetX, offsetY } = ev
 
@@ -164,6 +169,8 @@ function onMouseDown(ev) {
         const { x, y, size, txt } = line
         const textWidth = gCtx.measureText(txt).width;
         const textHeight = size;
+        elTextMeme.placeholder = line.txt
+
 
         return offsetX >= x && offsetX <= x + textWidth &&
             offsetY >= y - textHeight && offsetY <= y
@@ -298,7 +305,11 @@ function showMeme() {
 }
 
 function toggleMenu() {
-    document.body.classList.toggle('menu-open')
+    const body = document.body
+    const backdrop = document.querySelector('.backdrop')
+    
+    body.classList.toggle('menu-open')
+    backdrop.classList.toggle('show')
 }
 
 

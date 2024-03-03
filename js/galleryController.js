@@ -55,8 +55,10 @@ function onSelectImg(elImg) {
     elMemeEditor.classList.remove('hide')
     setImg(elImg)
     // resizeCanvas()
+   
 
     renderMeme()
+    
 }
 
 function onSetFilterBy(val) {
@@ -81,6 +83,9 @@ function showGallery() {
         elGallery.classList.remove('hide')
         elMemeEditor.classList.add('hide')
     }
+    const mems=getMeme()
+    mems.lines=[]
+    addLine('Text here')
 
 }
 

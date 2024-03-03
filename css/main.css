@@ -12,6 +12,7 @@
 @import url(components/gallery.css);
 @import url(components/main-header.css);
 @import url(components/footer.css);
+@import url(components/backdrop.css);
 
 /* MEDIA QUERIES */
 @import url(setup/mq.css);

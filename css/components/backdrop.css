@@ -1,0 +1,55 @@
+.main-header .btn-toggle-menu {
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer;
+    z-index: 3000;
+}
+
+
+.main-header .btn-toggle-menu .hamburger-lines {
+    height: 26px;
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.main-header .btn-toggle-menu .hamburger-lines .line {
+    height: 4px;
+    width: 100%;
+    background-color: aliceblue; 
+    transition: transform 0.4s; 
+}
+
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line1 {
+    transform: rotate(-45deg); 
+    transform-origin: right top;
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line2 {
+    transform: scale(0); 
+}
+
+body.menu-open .btn-toggle-menu .hamburger-lines .line.line3 {
+    transform: rotate(45deg); 
+    transform-origin: right bottom;
+}
+
+
+.backdrop {
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    pointer-events: none; 
+    transition: opacity 0.3s; 
+}
+
+.backdrop.show {
+    opacity: 1; 
+    pointer-events: auto; 
+}

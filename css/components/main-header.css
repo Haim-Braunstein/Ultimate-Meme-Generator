@@ -1,104 +1,64 @@
-.main-header{
-    background-color:var(--clrPrimary-1);
+.main-header {
+    background-color: var(--clrPrimary-1);
     height: 3.2rem;
     width: 100%;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .main-header a {
     text-decoration: none;
 }
 
- .main-heading{
+.main-heading {
     font-size: 2rem;
     color: white;
- }
-
+    text-align: center; 
+    margin-top: 20px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+    font-family: 'Roboto', sans-serif;
+}
 .main-header .main-nav a {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
-
     min-width: 130px;
     min-height: 50px;
     font-size: 1.1875em;
     color: var(--clrPrimary-2);
-
+    transition: box-shadow 0.4s; 
 }
 
 .main-header .main-nav a:hover {
     box-shadow: inset 0px -3px 0 var(--clrPrimary-2);
-    transition: box-shadow 0.4s;
 }
 
-.logo{
-    display: grid;
+.logo {
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-inline-start: 50px;
     font-family: sans-serif;
     font-size: 1.5em;
-    color:var(--clrPrimary-2);
-
+    color: var(--clrPrimary-2);
+    z-index: 2000; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
-.filter-category{
+
+
+
+.filter-category {
     background-color: white;
     width: max-content;
     height: 30px;
     border: 2px solid var(--clrPrimary-1);
-    /* background-color: var(--clrPrimary-1); */
     border-radius: 10px;
 }
 
-.filter-keyword button{
+.filter-keyword button {
     width: max-content;
     height: 40px;
     color: white;
 }
 
-.main-header .btn-toggle-menu {
-    background-color: inherit;
-    border: 0;
-    cursor: pointer;
-}
 
-.main-header .btn-toggle-menu .hamburger-lines {
-    height: 26px;
-    width: 32px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.main-header .btn-toggle-menu .hamburger-lines .line {
-    height: 4px;
-    width: 100%;
-    background-color: aliceblue;
-    transition: 0.4s;
-}
-
-body.menu-open .btn-toggle-menu .hamburger-lines .line.line1 {
-    rotate: -45deg;
-    transform-origin: right top;
-}
-
-body.menu-open .btn-toggle-menu .hamburger-lines .line.line2 {
-    scale: 0;
-}
-
-body.menu-open .btn-toggle-menu .hamburger-lines .line.line3 {
-    rotate: 45deg;
-    transform-origin: right bottom;
-}
-
-.backdrop {
-    position: fixed;
-    inset: 0;
-    /* z-index: -1; */
-    pointer-events: none;
-    background-color: rgb(177, 177, 177, .6);
-
-    opacity: 0;
-}

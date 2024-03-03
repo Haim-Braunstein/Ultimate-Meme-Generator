@@ -64,11 +64,11 @@
         <section class="meme-editor  hide ">
             <div class="meme-editor-layout flex flow-column ">
                 <div class="canvas-container">
-                    <canvas onmousedown="onMouseDown(event)" width="600" height="600" class="img-canvas">
+                    <canvas width="500" height="500" onmousedown="onMouseDown(event)"  class="img-canvas">
                     </canvas>
                 </div>
                 <div class="editor">
-                    <div class="editor-btn grid flow-column align-center">
+                    <div class="editor-btn flex flow-column align-center">
                         <div class="text-editor flex">
                             <input type="text" oninput="onTextMeme(this)" class="text-meme"
                                 placeholder="Enter text">
@@ -125,7 +125,7 @@
                         <button class="share-facebook-btn btn" onclick="onUploadImg()">
                             <img src="icons/facebook-logo.png" alt=""></button>
                         </button>
-                        <a href="#" class="share-btn">Share</a>
+                        <!-- <a href="#" class="share-btn">Share</a> -->
 
                     </div>
                 </div>
@@ -140,7 +140,7 @@
         </h4>
     </footer>
 
-    <section class="backdrop">
+    <section class="backdrop" onclick="toggleMenu()">
        
             </div>
         </div>

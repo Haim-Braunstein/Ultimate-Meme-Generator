@@ -1,8 +1,12 @@
-footer{
-    flex-direction: column;
-    max-width: 100%;
-}
-.footer-logo{
-    color:var(--clrPrimary-1) ;
 
+
+footer {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    margin-top: 20px;
+}
+
+.footer-logo {
+    color: var(--clrPrimary-1);
 }
