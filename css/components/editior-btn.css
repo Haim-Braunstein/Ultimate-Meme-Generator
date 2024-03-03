@@ -1,5 +1,5 @@
-
-.color-picker-container, .editor-btn button {
+.color-picker-container,
+.editor-btn button {
     width: 60px;
     height: 60px;
     background-color: var(--clrPrimary-1);
@@ -9,17 +9,23 @@
     justify-content: center;
 }
 
-.editor-btn{
-      gap: 20px; 
-     display: flex;
-     flex-direction: column;
-     margin-inline-end: 17.125em;
+.editor-btn {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-inline-end: 17.125em;
+}
+
+.meme-editor-layout {
+    justify-content: center;
+    gap: 2.0625em;
 }
 
 .editor-btn img {
     width: 40px;
     height: 30px;
 }
+
 /* canvas{
     display: flex;
     justify-content: center;
@@ -36,7 +42,7 @@ padding-block-start: 2em; */
     z-index: 1;
 }
 
-.text-meme{
+.text-meme {
     background-color: white;
     width: max-content;
     height: 30px;
@@ -44,10 +50,8 @@ padding-block-start: 2em; */
     border-radius: 10px;
 }
 
-.choose-font-btn{
+.choose-font-btn {
     height: 40px;
     width: max-content;
     color: white;
 }
-
-

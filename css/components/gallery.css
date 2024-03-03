@@ -17,7 +17,6 @@
 .gallery-container img{
     border-radius: 3em;
     box-shadow: -2px 4px 6px 0px black;
-    max-width:100%;
     height:auto;
 
 }

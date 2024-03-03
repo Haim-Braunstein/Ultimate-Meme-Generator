@@ -58,16 +58,19 @@ function resizeCanvas() {
 
 }
 
-function onTextMeme(txt) {
+function onTextMeme({value, placeholder}) {
     const selectedLine = onLineClicked()
+    placeholder=value
 
-    setLineText(txt, selectedLine)
+    setLineText(value, selectedLine)
     renderMeme()
 
 }
 
 function onSetColor(elInputColor) {
     setColor(elInputColor)
+    renderMeme()
+
 }
 
 function onDecreaseFontSize() {
@@ -127,7 +130,7 @@ function onLineClicked() {
     const mems = getMeme()
     const selectedLine = mems.lines[mems.selectedLineIdx]
     const elTextMeme = document.querySelector('.text-meme')
-    elTextMeme.value = selectedLine.txt
+    elTextMeme.placeholder = selectedLine.txt
 
     return selectedLine
 }
@@ -216,6 +219,8 @@ function handleClickedLine(clickedLine) {
 function onChooseFont({ value: font }) {
 
     setChooseFont(font)
+    renderMeme()
+
 
 }
 
@@ -277,6 +282,7 @@ function showMeme() {
     elMemeSaved.classList.remove('hide')
 
     const savedCanvasData = localStorage.getItem('canvas')
+    console.log(savedCanvasData.data);
 
     if (savedCanvasData) {
         const img = new Image()

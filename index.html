@@ -62,7 +62,7 @@
         </section>
 
         <section class="meme-editor  hide ">
-            <div class="meme-editor-layout grid flow-column ">
+            <div class="meme-editor-layout flex flow-column ">
                 <div class="canvas-container">
                     <canvas onmousedown="onMouseDown(event)" width="600" height="600" class="img-canvas">
                     </canvas>
@@ -70,7 +70,7 @@
                 <div class="editor">
                     <div class="editor-btn grid flow-column align-center">
                         <div class="text-editor flex">
-                            <input type="text" oninput="onTextMeme(this.value)" class="text-meme"
+                            <input type="text" oninput="onTextMeme(this)" class="text-meme"
                                 placeholder="Enter text">
                         </div>
 
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="btns-row4 flex gap align-center">
-                            <select class="choose-font-btn btn" value="impact" onclick="onChooseFont(this)">
+                            <select class="choose-font-btn btn" value="impact" oninput="onChooseFont(this)">
                                 <option value="impact">Impact</option>
                                 <option value="arial">Arial</option>
                                 <option value="cursive">Cursive</option>
@@ -113,7 +113,7 @@
                                 <option value="monospace">monospace</option>
                             </select>
                             <div class="color-picker-container">
-                                <input type="color" class="input-color" onchange="onSetColor(this.value)">
+                                <input type="color" class="input-color" oninput="onSetColor(this.value)">
                                 <img src="icons/paint-board-and-brush.png" class="color-picker-img" alt="">
                             </div>
                         </div>
