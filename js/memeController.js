@@ -279,6 +279,8 @@ function onRemoveLine() {
 function updatePlaceHolder(txt) {
   
     const elTextInput = document.querySelector('.text-meme')
+    elTextInput.value =txt
+
     elTextInput.placeholder = txt
   }
 
