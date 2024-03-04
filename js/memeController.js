@@ -42,7 +42,6 @@ function renderMeme() {
                 const textWidth = gCtx.measureText(line.txt).width
                 const textHeight = line.size;
 
-                onLineClicked(mems.selectedLineIdx)
 
                 gCtx.strokeRect(line.x - 5, line.y - textHeight, textWidth + 10, textHeight + 5)
             }
@@ -63,7 +62,7 @@ function onTextMeme({value, placeholder}) {
     const selectedLine = onLineClicked()
 
     setLineText(value, selectedLine)
-    placeholder=value
+    updatePlaceHolder(value)
 
     renderMeme()
 
@@ -113,6 +112,7 @@ function downloadImg(elLink) {
 
 function onAddLine() {
 
+
     addLine()
     renderMeme()
 }
@@ -125,6 +125,7 @@ function onSwitchLine() {
         mems.selectedLineIdx = 0
         
     }
+
     renderMeme()
 }
 
@@ -133,7 +134,8 @@ function onLineClicked() {
     const mems = getMeme()
     const selectedLine = mems.lines[mems.selectedLineIdx]
     const elTextMeme = document.querySelector('.text-meme')
-    elTextMeme.placeholder = selectedLine.txt
+    updatePlaceHolder(selectedLine.txt)
+
     renderMeme()
 
     return selectedLine
@@ -167,9 +169,8 @@ function onMouseDown(ev) {
 
     const clickedLine = lines.find(line => {
         const { x, y, size, txt } = line
-        const textWidth = gCtx.measureText(txt).width;
-        const textHeight = size;
-        elTextMeme.placeholder = line.txt
+        const textWidth = gCtx.measureText(txt).width
+        const textHeight = size
 
 
         return offsetX >= x && offsetX <= x + textWidth &&
@@ -180,6 +181,8 @@ function onMouseDown(ev) {
         handleClickedLine(clickedLine)
         isDragging = true;
         gStartPos = getEvPos(ev)
+        updatePlaceHolder(clickedLine.txt)
+
 
         gElCanvas.addEventListener('mousemove', onMouseMove);
         gElCanvas.addEventListener('mouseup', onMouseUp);
@@ -188,19 +191,20 @@ function onMouseDown(ev) {
 
 function onMouseMove(ev) {
     if (isDragging) {
-        const mems = getMeme();
-        const selectedLine = mems.lines[mems.selectedLineIdx];
+        const mems = getMeme()
+        const selectedLine = mems.lines[mems.selectedLineIdx]
 
-        const { offsetX, offsetY } = ev;
+        const { offsetX, offsetY } = ev
         const pos = getEvPos(ev)
 
-        const dx = offsetX - gStartPos.x;
-        const dy = offsetY - gStartPos.y;
+        const dx = offsetX - gStartPos.x
+        const dy = offsetY - gStartPos.y
 
-        selectedLine.x += dx;
-        selectedLine.y += dy;
+        selectedLine.x += dx
+        selectedLine.y += dy
 
-        gStartPos = pos;
+        gStartPos = pos
+        updatePlaceHolder(selectedLine.txt)
 
         renderMeme()
     }
@@ -210,8 +214,8 @@ function onMouseUp() {
 
     isDragging = false
 
-    gElCanvas.removeEventListener('mousemove', onMouseMove);
-    gElCanvas.removeEventListener('mouseup', onMouseUp);
+    gElCanvas.removeEventListener('mousemove', onMouseMove)
+    gElCanvas.removeEventListener('mouseup', onMouseUp)
 }
 
 function handleClickedLine(clickedLine) {
@@ -227,7 +231,6 @@ function onChooseFont({ value: font }) {
 
     setChooseFont(font)
     renderMeme()
-
 
 }
 
@@ -272,6 +275,12 @@ function onRemoveLine() {
     removeLine(mems.selectedLineIdx)
     renderMeme()
 }
+
+function updatePlaceHolder(txt) {
+  
+    const elTextInput = document.querySelector('.text-meme')
+    elTextInput.placeholder = txt
+  }
 
 
 function onSaveMeme() {

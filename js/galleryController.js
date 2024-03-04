@@ -85,7 +85,13 @@ function showGallery() {
     }
     const mems=getMeme()
     mems.lines=[]
+    updatePlaceHolder
     addLine('Text here')
+    
+    const elTextInput = document.querySelector('.text-meme')
+    elTextInput.value = ''
+    elTextInput.placeholder = 'Text Here'
+
 
 }
 

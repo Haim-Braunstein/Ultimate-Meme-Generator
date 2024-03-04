@@ -13,11 +13,14 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function setLineText(text, selectedLine) {
     selectedLine.txt = text
+    updatePlaceHolder(selectedLine.txt)
+
 }
 
 function addLine(randomText) {
     const line = _createLine(randomText)
     gMeme.lines.push(line)
+
 
     return line
 }
